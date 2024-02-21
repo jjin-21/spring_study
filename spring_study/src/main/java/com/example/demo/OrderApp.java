@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.discount.AppConfig;
 import com.example.demo.member.Grade;
 import com.example.demo.member.Member;
 import com.example.demo.member.MemberService;
@@ -10,8 +11,13 @@ import com.example.demo.order.OrderServiceImpl;
 
 public class OrderApp {
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
-        OrderService orderService = new OrderServiceImpl();
+
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+        OrderService orderService = appConfig.orderService();
+
+//        MemberService memberService = new MemberServiceImpl(null);
+//        OrderService orderService = new OrderServiceImpl(null, null);
 
         Long memberId = 1L;
         Member member = new Member(memberId, "재진", Grade.VIP);
